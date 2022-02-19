@@ -291,10 +291,10 @@ const slider = function () {
 slider();
 
 // let inputValue = document.querySelector('.inputBox');
-document.querySelector('#deposit').addEventListener('click', function (e) {
-  e.preventDefault();
-  console.log(Number(inputValue.value));
-});
+// document.querySelector('#deposit').addEventListener('click', function (e) {
+//   e.preventDefault();
+//   console.log(Number(inputValue.value));
+// });
 ///////////////////////////////////////
 ///////////////////////////////////////
 ///////////////////////////////////////

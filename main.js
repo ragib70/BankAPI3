@@ -29,12 +29,33 @@ async function logOut() {
 
 async function deposit() {
   let options = {
-    contractAddress: "0x4f890bA557CabB868dd1Cd6a77472B0915c5597C",
+    contractAddress: "0xA29BC35Dca0755DCE6b370037E49Cf835037cfc1",
     functionName: "confirm_payment",
     abi: [{"inputs":[],"name":"confirm_payment","outputs":[],"stateMutability":"payable","type":"function"}],
-    params: {},
-    msgValue: Moralis.Units.ETH(0.001)
+    msgValue: Moralis.Units.ETH(0.0001)
   }
+  await Moralis.executeFunction(options);
+}
+
+async function retreive() {
+  let options = {
+    contractAddress: "0x4f890bA557CabB868dd1Cd6a77472B0915c5597C",
+    functionName: "ReturnPayment",
+    abi: [
+      {"inputs":[],"name":"ReturnPayment","outputs":[],"stateMutability":"nonpayable","type":"function"}
+    ]
+  };
+  await Moralis.executeFunction(options);
+}
+
+async function confirm() {
+  let options = {
+    contractAddress: "0x4f890bA557CabB868dd1Cd6a77472B0915c5597C",
+    functionName: "confirm_Delivery",
+    abi: [
+      {"inputs":[],"name":"confirm_Delivery","outputs":[],"stateMutability":"nonpayable","type":"function"}
+    ]
+  };
   await Moralis.executeFunction(options);
 }
 
@@ -46,8 +67,32 @@ const loginMain = function(e){
   login();
 }
 
+const logOutMain = function(e){
+  e.preventDefault();
+  console.log(e);
+  logOut();
+}
+
+const depositMain = function(e){
+  e.preventDefault();
+  console.log(e);
+  deposit();
+}
+
+const retreiveMain = function(e){
+  e.preventDefault();
+  console.log(e);
+  retreive();
+}
+
+const confirmMain = function(e){
+  e.preventDefault();
+  console.log(e);
+  confirm();
+}
+
 document.querySelector('#btn-login').addEventListener('click', loginMain);
-document.getElementById('btn-logout').onclick = logOut;
-document.querySelector('#deposit').addEventListener('click', deposit);
-document.querySelector('#retreive').addEventListener('click', login);
-document.querySelector('#confirm').addEventListener('click', login);
+document.getElementById('btn-logout').onclick = logOutMain;
+document.querySelector('#deposit').addEventListener('click', depositMain);
+document.querySelector('#retreive').addEventListener('click', retreiveMain);
+document.querySelector('#confirm').addEventListener('click', confirmMain);
